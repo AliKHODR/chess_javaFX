@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ali.chess.controllers.Controller">
+   <children>
+      <Button layoutX="477.0" layoutY="514.0" mnemonicParsing="false" text="Restart Game" />
+      <Text layoutX="452.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label id="currentPlayer" fx:id="currentPlayer" layoutX="502.0" layoutY="63.0" text="white">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
