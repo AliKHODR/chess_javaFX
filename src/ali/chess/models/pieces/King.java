@@ -6,9 +6,10 @@ import ali.chess.models.Tile;
 import java.util.ArrayList;
 
 public class King extends Piece {
-    private boolean hasMoved;
+    private boolean isChecked;
     public King(String name, String color) {
         super(name, color);
+        this.isChecked = false;
         if(color == "WHITE"){
             setPath(getPath()+"white_king.png");
         }else {
@@ -16,8 +17,57 @@ public class King extends Piece {
         }
     }
 
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
     @Override
     public ArrayList<Tile> getPossibleMoves(Board board, int x, int y) {
-        return null;
+        ArrayList<Tile> possibleMoves = new ArrayList<>();
+
+        if(isValid(x, y+1) &&
+                (!board.getTile(x, y+1).isOccupied() ||
+                        (board.getTile(x, y+1).isOccupied() && board.getTile(x, y+1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x,y+1));
+
+        if(isValid(x+1, y+1) &&
+                (!board.getTile(x+1, y+1).isOccupied() ||
+                        (board.getTile(x+1, y+1).isOccupied() && board.getTile(x+1, y+1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x+1,y+1));
+
+        if(isValid(x+1,y) &&
+                (!board.getTile(x+1,y).isOccupied() ||
+                        (board.getTile(x+1,y).isOccupied() && board.getTile(x+1,y).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x+1,y));
+
+        if(isValid(x+1,y-1) &&
+                (!board.getTile(x+1,y-1).isOccupied() ||
+                        (board.getTile(x+1,y-1).isOccupied() && board.getTile(x+1,y-1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x+1,y-1));
+
+        if(isValid(x,y-1) &&
+                (!board.getTile(x,y-1).isOccupied() ||
+                        (board.getTile(x,y-1).isOccupied() && board.getTile(x,y-1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x,y-1));
+
+        if(isValid(x-1,y-1) &&
+                (!board.getTile(x-1,y-1).isOccupied() ||
+                        (board.getTile(x-1,y-1).isOccupied() && board.getTile(x-1,y-1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x-1,y-1));
+
+        if(isValid(x-1,y) &&
+                (!board.getTile(x-1,y).isOccupied() ||
+                        (board.getTile(x-1,y).isOccupied() && board.getTile(x-1,y).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x-1,y));
+
+        if(isValid(x-1,y+1) &&
+                (!board.getTile(x-1,y+1).isOccupied() ||
+                        (board.getTile(x-1,y+1).isOccupied() && board.getTile(x-1,y+1).getPiece().getColor() != getColor())))
+            possibleMoves.add(board.getTile(x-1,y+1));
+        return possibleMoves;
     }
 }

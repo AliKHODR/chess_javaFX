@@ -62,7 +62,6 @@ public class Board {
     }
 
     public ArrayList<Tile> getMoves(Piece piece, int x, int y){
-        //System.out.println(piece.getPossibleMoves(this,x,y).get(0));
        return piece.getPossibleMoves(this,x,y);
 
     }

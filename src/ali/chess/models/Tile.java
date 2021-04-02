@@ -40,11 +40,18 @@ public class Tile {
         }else {
             setOccupied(false);
         }
-
         this.piece = piece;
     }
 
-    public void setOccupied(boolean occupied) {
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    private void setOccupied(boolean occupied) {
         isOccupied = occupied;
     }
 

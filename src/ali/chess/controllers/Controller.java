@@ -3,6 +3,7 @@ package ali.chess.controllers;
 import ali.chess.models.Board;
 import ali.chess.models.Game;
 import ali.chess.models.Tile;
+import ali.chess.models.pieces.King;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
 
 import java.awt.*;
 import java.net.URL;
@@ -28,6 +30,8 @@ public class Controller implements Initializable {
 
     @FXML
     private Label currentPlayer;
+    @FXML
+    private Button restartGame;
     /**
      * initiate Board, and create 64 panes that represent the board and append them to the root Node
      * each pane has an id of two digits [xy] ex: [00] [01]...., it represents the position of each Tile (Coordinate X - Coordinate Y)
@@ -38,7 +42,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initBoard();
         currentPlayer.textProperty().setValue(game.getCurrentPlayer());
-
+        restartGame.setOnMouseClicked(event -> initBoard());
         root.addEventHandler(MouseEvent.MOUSE_CLICKED, event-> {
             String id;
            if(event.getTarget() instanceof ImageView){
@@ -79,6 +83,8 @@ public class Controller implements Initializable {
                 }
                 if(tiles[x][y].isHighlighted()) {
                     pane.setStyle("-fx-background-color:#589cc9" );
+                } if(tiles[x][y].getPiece() instanceof King && ((King) tiles[x][y].getPiece()).isChecked()) {
+                    pane.setStyle("-fx-background-color:#d32a54" );
                 }
                 if(tiles[x][y].getPiece() != null){
                     String path = tiles[x][y].getPiece().getPath();
@@ -90,6 +96,8 @@ public class Controller implements Initializable {
                 root.getChildren().add(pane);
             }
         }
+
         currentPlayer.textProperty().setValue(game.getCurrentPlayer());
     }
+
 }

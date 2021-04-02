@@ -10,6 +10,7 @@ public abstract class Piece {
     private String name;
     private String color;
     private String PATH = "/assets/pieces/";
+    private boolean hasMoved;
 
     public Piece(String name, String color) {
         this.name = name;
@@ -18,6 +19,14 @@ public abstract class Piece {
 
     public String getName() {
         return name;
+    }
+
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
+    }
+
+    public boolean isHasMoved() {
+        return hasMoved;
     }
 
     public String getPath() {
