@@ -68,7 +68,7 @@ public class Game {
         selectedTile.setPiece(null);
         targetTile.setPiece(piece);
         //Check for possible checks
-        isCheckAfterMove();
+        //isCheckAfterMove();
         movesList.add(move);
         if(currentPlayer.equals(Constants.WHITE_PLAYER)){
             currentPlayer = Constants.BLACK_PLAYER;
